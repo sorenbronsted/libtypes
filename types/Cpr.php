@@ -30,10 +30,13 @@ class Cpr {
   public function getCentury() {
     $result = "";
     $sCentury = substr($this->number, 6, 1);
-    if ($sCentury == "A") { //Ufds foreigner
-      $result = "19";
+    if ($sCentury == "A" || substr($this->number, 6) == '0000') { //Ufds foreigner
+			// UFDS foreigners can not be more than 100 years old, otherwise this will return incorrect century
+			$year = substr($this->number, 4, 2);
+			$currentYear = strftime('%g');
+      $result = ($year <= $currentYear ? "20" : "19");
     }
-    else {
+    else { // Danish CPR rules
       $century = intval($sCentury);
       if ($century < 4) {
         $result = "19";

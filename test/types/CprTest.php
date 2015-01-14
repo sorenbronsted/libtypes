@@ -11,6 +11,7 @@ class CprTest extends PHPUnit_Framework_TestCase {
       "19" => "0103804234",
       "19" => "0103909234",
       "19" => "010390AAA1",
+      "19" => "0103900000",
       "20" => "0103094234",
       "20" => "0103258234",
       "18" => "0103605234",
@@ -71,5 +72,9 @@ class CprTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(1952-1925, $age);
     $age = $male->getAgeAt("1952-01-20");
     $this->assertEquals(1952-1925, $age);
+		
+    $male = new Cpr("0607060000"); // Foreign born after 2000
+    $age = $male->getAgeAt("2010-01-20");
+    $this->assertEquals(2010-2006, $age);
   }
 }

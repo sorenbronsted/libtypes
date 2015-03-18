@@ -77,4 +77,17 @@ class CprTest extends PHPUnit_Framework_TestCase {
     $age = $male->getAgeAt("2010-01-20");
     $this->assertEquals(2010-2006, $age);
   }
+	
+	public function testCompare() {
+		$cprStr = "0103251235";
+    $cpr = new Cpr($cprStr);
+		$this->assertEquals($cprStr, $cpr);
+		$this->assertEquals(new Cpr($cprStr), $cpr);
+		$this->assertTrue($cpr == $cprStr);
+
+    $cpr = new Cpr('0101012222');
+		$this->assertNotEquals($cprStr, $cpr);
+		$this->assertNotEquals(new Cpr($cprStr), $cpr);
+		$this->assertTrue($cpr != $cprStr);
+	}
 }

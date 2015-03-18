@@ -176,4 +176,19 @@ class DateTest extends PHPUnit_Framework_TestCase {
     $date = Date::parse('01-01-1980');
     $this->assertFalse($date->isBetween($from, $to));
   }
+	
+	public function testCompare() {
+		$date1 = Date::parse('01-01-2015');
+		
+		$this->assertTrue('2015-01-01' == $date1);
+		$this->assertTrue('2015-01-02' != $date1);
+		
+		$this->assertTrue($date1 === $date1);
+
+		$date2 = Date::parse('01-01-2015');
+		$this->assertTrue($date1 == $date2);
+
+		$date2 = Date::parse('02-01-2015');
+		$this->assertTrue($date1 != $date2);
+	}
 }

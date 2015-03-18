@@ -54,4 +54,16 @@ class CaseNumberTest extends PHPUnit_Framework_TestCase {
       }
     }
   }
+	
+	public function testCompare() {
+		$cn1 = CaseNumber::parse(20150101);
+		$this->assertTrue('20150101' == $cn1);
+		$this->assertTrue('20150102' != $cn1);
+		
+		$cn2 = CaseNumber::parse(20150101);
+		$this->assertTrue($cn2 == $cn1);
+
+		$cn2 = CaseNumber::parse(20150102);
+		$this->assertTrue($cn2 != $cn1);
+	}
 }

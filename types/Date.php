@@ -1,6 +1,6 @@
 <?php
 
-class Date {
+class Date implements Comparable {
   protected $date;
   const FMT_DA = "d-m-Y";
   const FMT_DA_LONG = "d-m-Y H:i:s";
@@ -99,7 +99,7 @@ class Date {
     $this->date->sub($interval);
   }
   
-  public function equals(Date $other) {
+  public function isEqual(Comparable $other) {
     $fmt = "YmdHis";
     return ($this->format($fmt) - $other->format($fmt)) == 0;
   }

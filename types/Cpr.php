@@ -1,6 +1,6 @@
 <?php
 
-class Cpr {
+class Cpr implements Comparable {
   private $number;
   
   public function __construct($number) {
@@ -81,5 +81,9 @@ class Cpr {
       // Ignore
     }
     return $result;
+  }
+
+  public function isEqual(Comparable $other) {
+    return $this->number == $other->number;
   }
 }

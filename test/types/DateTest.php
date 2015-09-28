@@ -134,7 +134,7 @@ class DateTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals($dt->format("Y-m-d H:i:s"), $d->format(Date::FMT_MYSQL_LONG));
     $this->assertEquals($dt->format("His"), $d->time);
     $this->assertEquals($dt->format("YmdHis"), $d->datetime);
-    $this->assertTrue($d->equals(new Date($dt)));
+    $this->assertTrue($d->isEqual(new Date($dt)));
   }
   
   public function testDefault() {

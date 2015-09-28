@@ -1,4 +1,5 @@
 *.komodoproject
 .komodotools
+.idea
 vendor/
 doc/coverage

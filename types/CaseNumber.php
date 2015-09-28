@@ -1,6 +1,6 @@
 <?php
 
-class CaseNumber {
+class CaseNumber implements Comparable {
   private $number;
 
   public function __construct($number) {
@@ -18,7 +18,7 @@ class CaseNumber {
     return strval($this->number);
   }
 
-  public function isEqual(CaseNumber $cn) {
+  public function isEqual(Comparable $cn) {
     return $this->number == $cn->toNumber();
   }
   

@@ -1,6 +1,19 @@
 {
   "name": "ufds/libtypes",
   "description": "UFDS standard types",
-  "license": "UFDS privat"
+  "license": "UFDS privat",
+
+  "require": {
+    "ufds/libcommon": "dev-master"
+  },
+
+  "repositories": [
+    {"type": "vcs", "url": "http://dev.ufds.lan/git/libcommon.git"}
+  ],
+
+  "autoload": {
+    "classmap": ["types/"]
+  }
+
 }
 

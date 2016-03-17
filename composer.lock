@@ -1,17 +1,18 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d36201429a5ea65d7eb61c0525f83fc4",
+    "hash": "e8a3a918b4319a8da0f2fbb446615daa",
+    "content-hash": "72f3e1d27f0df0e52930381f94760aab",
     "packages": [
         {
             "name": "ufds/libcommon",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "http://dev.ufds.lan/git/libcommon.git",
+                "url": "http://dev/git/ufds/libcommon.git",
                 "reference": "dafdfe8f7ed7891a6c56369ab2aef4071cee0d5f"
             },
             "type": "library",
@@ -34,6 +35,7 @@
         "ufds/libcommon": 20
     },
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": [],
     "platform-dev": []
 }

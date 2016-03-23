@@ -1,5 +1,11 @@
-*.komodoproject
-.komodotools
 .idea
-vendor/
+debian/files
+debian/*debhelper*
+debian/*substvars*
 doc/coverage
+vendor
+public/client/main.dart.*
+public/status.txt
+*.sql.gz
+*.tgz
+*~

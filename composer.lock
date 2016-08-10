@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e8a3a918b4319a8da0f2fbb446615daa",
-    "content-hash": "72f3e1d27f0df0e52930381f94760aab",
+    "hash": "310a289ef0721a1d819929d829cb0af5",
+    "content-hash": "f63b3e07ede088f5b4ad40bf43cece02",
     "packages": [
         {
             "name": "ufds/libcommon",
@@ -13,19 +13,21 @@
             "source": {
                 "type": "git",
                 "url": "http://dev/git/ufds/libcommon.git",
-                "reference": "dafdfe8f7ed7891a6c56369ab2aef4071cee0d5f"
+                "reference": "54f491fa74ff3dce4502c4bb230a52ac6eaef7dc"
             },
             "type": "library",
             "autoload": {
-                "classmap": [
-                    "common/"
-                ]
+                "psr-4": {
+                    "ufds\\": [
+                        "common/"
+                    ]
+                }
             },
             "license": [
                 "UFDS privat"
             ],
             "description": "UFDS common library",
-            "time": "2015-12-11 13:57:53"
+            "time": "2016-08-05 11:18:57"
         }
     ],
     "packages-dev": [],
@@ -37,5 +39,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": []
+    "platform-dev": [],
+    "platform-overrides": {
+        "php": "5.4"
+    }
 }

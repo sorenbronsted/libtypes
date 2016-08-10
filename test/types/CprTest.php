@@ -1,29 +1,33 @@
 <?php
+namespace ufds;
+
+use PHPUnit_Framework_TestCase;
+
 require_once 'test/settings.php';
 
 class CprTest extends PHPUnit_Framework_TestCase {
 
   public function testValid() {
     $cprs = array(
-      "19" => "0103251234",
-      "19" => "0103502234",
-      "19" => "0103753234",
-      "19" => "0103804234",
-      "19" => "0103909234",
-      "19" => "010390AAA1",
-      "19" => "0103900000",
-      "20" => "0103094234",
-      "20" => "0103258234",
-      "18" => "0103605234",
-      "18" => "0103706234",
-      "18" => "0103807234",
-      "18" => "0103908234",
+      "0103251234" => 19,
+      "0103502234" => 19,
+      "0103753234" => 19,
+      "0103804234" => 19,
+      "0103909234" => 19,
+      "010390AAA1" => 19,
+      "0103900000" => 19,
+      "0103094234" => 20,
+      "0103258234" => 20,
+      "0103605234" => 18,
+      "0103706234" => 18,
+      "0103807234" => 18,
+      "0103908234" => 18,
     );
-    foreach ($cprs as $key => $cpr_number) {
+    foreach ($cprs as $cpr_number => $test) {
       try {
         $cpr = new Cpr($cpr_number);
         $century = $cpr->getCentury();
-        $this->assertEquals($key, $century, $cpr_number);
+        $this->assertEquals($test, $century, $cpr_number);
       }
       catch (CprException $e) {
         $this->fail("Unexpected exception");
@@ -36,7 +40,7 @@ class CprTest extends PHPUnit_Framework_TestCase {
     foreach ($cprs as $cpr_number) {
       try {
         $cpr = new Cpr($cpr_number);
-        $century = $cpr->getCentury();
+        $cpr->getCentury();
         $this->fail("Expected exception for $cpr_number");
       }
       catch (CprException $e) {
@@ -62,7 +66,7 @@ class CprTest extends PHPUnit_Framework_TestCase {
   public function testGetDate() {
     $male = new Cpr("0103251235");
     $date = $male->getDate();
-    $this->assertInstanceOf("Date", $date);
+    $this->assertInstanceOf("ufds\Date", $date);
     $this->assertEquals(Date::parse("1925-03-01"), $date);
   }
   

@@ -1,4 +1,11 @@
 <?php
+namespace ufds;
+
+use DateInterval;
+use DateTime;
+use PHPUnit_Framework_TestCase;
+use SimpleXMLElement;
+
 require_once 'test/settings.php';
 
 class DateTest extends PHPUnit_Framework_TestCase {
@@ -40,12 +47,12 @@ class DateTest extends PHPUnit_Framework_TestCase {
     $date2 = Date::parse("2001-01-01");
     $date3 = Date::parse("2001-02-01");
     $this->assertEquals($date1, $date2);
-    $this->assertnotEquals($date1, $date3);
+    $this->assertNotEquals($date1, $date3);
   }
   
   public function testEmpty() {
     $d = Date::parse("0000-00-00");
-    $this->assertequals(true, is_null($d));
+    $this->assertEquals(true, is_null($d));
     
     try {
       $d = Date::parse(10203040506);

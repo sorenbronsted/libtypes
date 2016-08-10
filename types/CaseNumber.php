@@ -1,4 +1,5 @@
 <?php
+namespace ufds;
 
 class CaseNumber implements Comparable {
   private $number;

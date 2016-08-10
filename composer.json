@@ -3,21 +3,24 @@
   "description": "UFDS standard types",
   "license": "UFDS privat",
 
+  "config" : {
+    "platform": {
+      "php": "5.4"
+    },
+    "secure-http": false
+  },
+
+  "autoload": {
+    "psr-4": { "ufds\\": ["types/"] }
+  },
+
   "require": {
     "ufds/libcommon": "dev-master"
   },
 
-  "config" : {
-    "secure-http": false
-  },
-
   "repositories": [
     {"type": "vcs", "url": "http://dev/git/ufds/libcommon.git"}
-  ],
-
-  "autoload": {
-    "classmap": ["types/"]
-  }
+  ]
 
 }
 

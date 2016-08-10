@@ -1,4 +1,5 @@
 <?php
+namespace ufds;
 
 class Timestamp extends Date {
 
@@ -51,5 +52,3 @@ class Timestamp extends Date {
     return true;
   }
 }
-
-?>

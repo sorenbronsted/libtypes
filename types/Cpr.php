@@ -1,4 +1,5 @@
 <?php
+namespace ufds;
 
 class Cpr implements Comparable {
   private $number;

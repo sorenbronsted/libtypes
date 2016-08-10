@@ -1,4 +1,9 @@
 <?php
+namespace ufds;
+
+use DateInterval;
+use DateTime;
+use DateTimeZone;
 
 class Date implements Comparable {
   protected $date;

@@ -145,6 +145,9 @@ class Date implements Comparable {
       else if (strlen($date) > 10) {
         $fmt = self::FMT_DA_LONG;
       }
+      else if (strlen($date) == 8) {
+      	$fmt = self::FMT_YMD;
+      }
     }
     $dt = DateTime::createFromFormat($fmt, $date, new DateTimeZone(self::TIMEZONE));
     if ($dt === false) {

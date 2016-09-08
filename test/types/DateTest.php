@@ -18,7 +18,7 @@ class DateTest extends PHPUnit_Framework_TestCase {
 
   public function testNotValid() {
     try {
-      $date = Date::parse("01012001");
+      Date::parse("1012001");
       $this->fail("IllegalArgumentException expected");
     }
     catch (IllegalArgumentException $e) {
@@ -197,5 +197,10 @@ class DateTest extends PHPUnit_Framework_TestCase {
 
 		$date2 = Date::parse('02-01-2015');
 		$this->assertTrue($date1 != $date2);
+	}
+
+	public function testParseYmd() {
+		$date = Date::parse('20160227');
+		$this->assertEquals('27-02-2016', $date->format(Date::FMT_DA));
 	}
 }

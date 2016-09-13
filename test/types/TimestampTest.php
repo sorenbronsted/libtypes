@@ -18,7 +18,7 @@ class TimestampTest extends PHPUnit_Framework_TestCase {
     $s = "2012-03-01";
     $t = Timestamp::parse($s);
     $this->assertNotNull($t);
-    $this->assertEquals($s, $t->toString());
+    $this->assertEquals($s.' 00:00:00', $t->toString());
   }
 
 	public function testdiff() {

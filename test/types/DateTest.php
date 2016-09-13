@@ -203,4 +203,11 @@ class DateTest extends PHPUnit_Framework_TestCase {
 		$date = Date::parse('20160227');
 		$this->assertEquals('27-02-2016', $date->format(Date::FMT_DA));
 	}
+
+	public function testStripTime() {
+		$s = '2016-09-01 00:00:00.000';
+		$d = Date::parse($s);
+		$fixture = Date::parse('2016-09-01');
+		$this->assertEquals($fixture, $d);
+	}
 }

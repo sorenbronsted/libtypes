@@ -21,7 +21,7 @@ class Date implements Comparable {
     else {
       if (is_object($date)) {
         if ($date instanceof Date) {
-          $this->date = new DateTime($date->toString(), new DateTimeZone(self::TIMEZONE));
+          $this->date = $date->date;
         }
         else if ($date instanceof DateTime) {
           $this->date = $date;
@@ -138,28 +138,22 @@ class Date implements Comparable {
       $fmt = self::FMT_DA;
       if (self::isMysqlDate($date)) {
         $fmt = self::FMT_MYSQL;
-        if (strlen($date) > 10){
-          $fmt = self::FMT_MYSQL_LONG;
-        }
-      }
-      else if (strlen($date) > 10) {
-        $fmt = self::FMT_DA_LONG;
       }
       else if (strlen($date) == 8) {
       	$fmt = self::FMT_YMD;
       }
     }
+    if (strlen($date) > 10) {
+    	$date = substr($date, 0, 10);
+    }
     $dt = DateTime::createFromFormat($fmt, $date, new DateTimeZone(self::TIMEZONE));
     if ($dt === false) {
       throw new IllegalArgumentException("date: $date", __FILE__, __LINE__);
     }
-    if (strlen($fmt) <= 10) {
-      $dt->setTime(0,0,0);
-    }
-    return (strlen($fmt) > 10 ? new Timestamp($dt) : new Date($dt));
+    return new Date($dt);
   }
   
-  private static function isMysqlDate($date) {
+  protected static function isMysqlDate($date) {
     //Mysql date is on the form yyyy-mm-dd
     if ($date != "" && $date[4] == '-' && $date[7] == '-') {
       return true;

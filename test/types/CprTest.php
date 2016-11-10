@@ -56,13 +56,25 @@ class CprTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(true, $male->isMale());
   }
   
-  public function testEmpty() {
+  public function testParse() {
     foreach(array("", null) as $value) {
       $value = Cpr::parse($value);
       $this->assertEquals(null, $value);
     }
+
+    // Test undersized
+    $cpr = Cpr::parse('101012222');
+	  $this->assertEquals('0101012222', $cpr);
+
+	  // with hypen
+	  $cpr = Cpr::parse('10101-2222');
+	  $this->assertEquals('0101012222', $cpr);
+
+	  // only the first 10
+	  $cpr = Cpr::parse('010101222233');
+	  $this->assertEquals('0101012222', $cpr);
   }
-  
+
   public function testGetDate() {
     $male = new Cpr("0103251235");
     $date = $male->getDate();
@@ -93,5 +105,15 @@ class CprTest extends PHPUnit_Framework_TestCase {
 		$this->assertNotEquals($cprStr, $cpr);
 		$this->assertNotEquals(new Cpr($cprStr), $cpr);
 		$this->assertTrue($cpr != $cprStr);
+	}
+
+	public function testDisplay() {
+		$cpr = Cpr::parse('101012222');
+		$this->assertEquals('101012222', $cpr);
+		$this->assertEquals('010101-2222', $cpr->display());
+
+		$cpr = Cpr::parse('0101012222');
+		$this->assertEquals('0101012222', $cpr);
+		$this->assertEquals('010101-2222', $cpr->display());
 	}
 }

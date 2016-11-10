@@ -62,26 +62,22 @@ class Cpr implements Comparable {
   }
   
   public function __toString() {
-    return $this->number;
+    return "".$this->number;
   }
-  
+
+  public function display() {
+	  $s = str_pad($this->number,10,'0',STR_PAD_LEFT);
+	  return substr($s,0,6).'-'.substr($s,6,4);
+  }
+
   public static function parse($input) {
-    if (is_null($input)) {
+    if (is_null($input) || strlen(trim($input)) == 0) {
       return null;
     }
-    
-    $prefix = "";
-    if (strlen($input) == 9) {
-      $prefix = "0";
-    }
-    $result = null;
-    try {
-      $result = new Cpr($prefix.$input);
-    }
-    catch (IllegalArgumentException $e) {
-      // Ignore
-    }
-    return $result;
+    $input = str_replace('-','',trim($input));
+		$input = substr($input,0,10);
+    $s = str_pad($input, 10, '0', STR_PAD_LEFT);
+    return new Cpr($s);
   }
 
   public function isEqual(Comparable $other) {

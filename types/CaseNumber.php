@@ -26,7 +26,11 @@ class CaseNumber implements Comparable {
   public function toNumber() {
     return $this->number;
   }
-  
+
+  public function display() {
+	  return intval(substr($this->number, 4)) . "/" . substr($this->number, 0, 4);
+  }
+
   public static function parse($number) {
     if (is_null($number)) {
       return null;

@@ -70,4 +70,11 @@ class CaseNumberTest extends PHPUnit_Framework_TestCase {
 		$cn2 = CaseNumber::parse(20150102);
 		$this->assertTrue($cn2 != $cn1);
 	}
+
+	public function testDisplay() {
+		$cn = CaseNumber::parse(20150101);
+		$this->assertEquals('101/2015', $cn->display());
+		$cn = CaseNumber::parse(20151001);
+		$this->assertEquals('1001/2015', $cn->display());
+	}
 }

@@ -27,17 +27,21 @@ class Cpr implements Comparable {
   public function isMale() {
     return intval(substr($this->number,9,1)) % 2 == 1;
   }
-  
+
+  public function isForeigner() {
+	  return !is_numeric(substr($this->number, 6)) || substr($this->number, 6) == '0000';
+  }
+
   public function getCentury() {
     $result = "";
-    $sCentury = substr($this->number, 6, 1);
-    if ($sCentury == "A" || substr($this->number, 6) == '0000') { //Ufds foreigner
+    if ($this->isForeigner()) {
 			// UFDS foreigners can not be more than 100 years old, otherwise this will return incorrect century
 			$year = substr($this->number, 4, 2);
 			$currentYear = strftime('%g');
       $result = ($year <= $currentYear ? "20" : "19");
     }
     else { // Danish CPR rules
+	    $sCentury = substr($this->number, 6, 1);
       $century = intval($sCentury);
       if ($century < 4) {
         $result = "19";

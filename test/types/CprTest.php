@@ -116,4 +116,17 @@ class CprTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals('0101012222', $cpr);
 		$this->assertEquals('010101-2222', $cpr->display());
 	}
+
+	public function testForeigner() {
+		$cpr = Cpr::parse('0101012222');
+		$this->assertEquals(false, $cpr->isForeigner());
+		$cpr = Cpr::parse('010101AAA1');
+		$this->assertEquals(true, $cpr->isForeigner());
+		$cpr = Cpr::parse('010101ABC1');
+		$this->assertEquals(true, $cpr->isForeigner());
+		$cpr = Cpr::parse('0101010000');
+		$this->assertEquals(true, $cpr->isForeigner());
+		$cpr = Cpr::parse('0101010AB1');
+		$this->assertEquals(true, $cpr->isForeigner());
+	}
 }

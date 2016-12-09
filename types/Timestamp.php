@@ -68,8 +68,11 @@ class Timestamp extends Date {
 				$fmt = self::FMT_DA_LONG;
 			}
 		}
-		if (strlen($timestamp) <= 10) {
+		if (strlen($timestamp) <= strlen('9999-12-31')) {
 			$timestamp .= ' 00:00:00';
+		}
+		if (strlen($timestamp) > strlen('9999-12-31 00:00:00')) {
+			$timestamp = substr($timestamp,0,19);
 		}
 		$dt = DateTime::createFromFormat($fmt, $timestamp, new DateTimeZone(self::TIMEZONE));
 		if ($dt === false) {

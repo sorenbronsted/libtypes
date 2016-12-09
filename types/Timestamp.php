@@ -51,6 +51,10 @@ class Timestamp extends Date {
     }
   }
 
+  public function getDate() {
+  	return new Date($this->date);
+  }
+
 	public static function parse($timestamp, $fmt = null) {
 		if (empty($timestamp) || strlen($timestamp) < 4 || substr($timestamp,0,4) == "0000") {
 			return null;

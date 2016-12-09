@@ -47,4 +47,12 @@ class TimestampTest extends PHPUnit_Framework_TestCase {
 		$ts2 = Timestamp::parse('01-01-2015 00:00:02');
 		$this->assertTrue($ts1 != $ts2);
 	}
+
+	public function testGetDate() {
+		$ts = Timestamp::parse('01-01-2015 00:00:01');
+  	$this->assertEquals('2015-01-01', $ts->getDate());
+		$this->assertNotEquals('2015-01-01 00:00:01', $ts->getDate());
+		$this->assertTrue(is_object($ts->getDate()));
+		$this->assertInstanceOf(Date::class, $ts->getDate());
+	}
 }

@@ -205,7 +205,7 @@ class DateTest extends PHPUnit_Framework_TestCase {
 	}
 
 	public function testStripTime() {
-		$s = '2016-09-01 00:00:00.000';
+		$s = '2016-09-01 01:23:45.000';
 		$d = Date::parse($s);
 		$fixture = Date::parse('2016-09-01');
 		$this->assertEquals($fixture, $d);

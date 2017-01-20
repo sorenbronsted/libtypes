@@ -143,13 +143,14 @@ class Date implements Comparable {
       	$fmt = self::FMT_YMD;
       }
     }
-    if (strlen($date) > 10) {
+    if (strlen($date) > strlen('9999-12-31')) {
     	$date = substr($date, 0, 10);
     }
     $dt = DateTime::createFromFormat($fmt, $date, new DateTimeZone(self::TIMEZONE));
     if ($dt === false) {
       throw new IllegalArgumentException("date: $date", __FILE__, __LINE__);
     }
+    $dt->setTime(0,0,0);
     return new Date($dt);
   }
   

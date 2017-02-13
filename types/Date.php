@@ -129,7 +129,11 @@ class Date implements Comparable {
     $days = $this->date->diff($other->date)->days;
     return ($this->isAfter($other) ? $days : -$days);
   }
-  
+
+	public function getTimestamp() {
+  	return $this->date->getTimestamp();
+	}
+
   public static function parse($date, $fmt = null) {
     if (empty($date) || strlen($date) < 4 || substr($date,0,4) == "0000") {
       return null;

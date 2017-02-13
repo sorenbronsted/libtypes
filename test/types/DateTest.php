@@ -210,4 +210,13 @@ class DateTest extends PHPUnit_Framework_TestCase {
 		$fixture = Date::parse('2016-09-01');
 		$this->assertEquals($fixture, $d);
 	}
+
+	public function testTimstamp() {
+  	$d = Date::parse('01-01-1970');
+  	$this->assertEquals(-3600, $d->getTimestamp()); // Timezone difference
+
+		$d = Date::parse('01-01-2017');
+		$this->assertEquals(1483225200, $d->getTimestamp()); // Timezone difference
+		$this->assertEquals(' 1. January 2017', strftime("%e. %B %Y", $d->getTimestamp()));
+	}
 }

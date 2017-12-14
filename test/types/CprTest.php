@@ -140,4 +140,21 @@ class CprTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals(false, $cpr1->isEqual($cpr2));
 		$this->assertEquals(false, $cpr2->isEqual($cpr1));
 	}
+
+	public function testIllegalArgument() {
+  	$illegals = [
+  		'0',
+		  '-1',
+		  '000000-0000',
+	  ];
+  	foreach ($illegals as $illegal) {
+		  try {
+			  Cpr::parse($illegal);
+			  $this->fail("Expected an exception: $illegal");
+		  }
+		  catch (IllegalArgumentException $e) {
+			  // ok
+		  }
+	  }
+	}
 }

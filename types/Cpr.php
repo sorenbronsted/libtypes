@@ -8,7 +8,11 @@ class Cpr implements Comparable {
     if (strlen($number) != 10) {
       throw new IllegalArgumentException($number, __FILE__, __LINE__);
     }
-    $this->number = $number;
+    //The first 6 chars must be a date
+	  if (Date::parse(substr($number, 0, 6), 'dmy') == null) {
+		  throw new IllegalArgumentException($number, __FILE__, __LINE__);
+	  }
+	  $this->number = $number;
   }
   
   public function getDate() {
@@ -80,8 +84,10 @@ class Cpr implements Comparable {
     }
     $input = str_replace('-','',trim($input));
 		$input = substr($input,0,10);
-    $s = str_pad($input, 10, '0', STR_PAD_LEFT);
-    return new Cpr($s);
+		if (strlen($input) == 9) {
+			$input = '0'.$input;
+		}
+    return new Cpr($input);
   }
 
   public function isEqual(Comparable $other) {

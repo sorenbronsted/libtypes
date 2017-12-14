@@ -48,7 +48,7 @@ class CaseNumber implements Comparable {
       }
       $value = intval($parts[1]) * 10000 + intval(sprintf("%04d", $parts[0]));
     }
-    else if (is_string($number)) {
+    else if (is_numeric($number)) {
       $value = intval($number + 0); // This will trigger $number to be converted to an integer
     }
     else if (is_float($number)) {

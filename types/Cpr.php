@@ -87,7 +87,14 @@ class Cpr implements Comparable {
 		if (strlen($input) == 9) {
 			$input = '0'.$input;
 		}
-    return new Cpr($input);
+		$retval = null;
+		try {
+			$retval = new Cpr($input);
+		}
+		catch (IllegalArgumentException $e) {
+			// do nothing
+		}
+    return $retval;
   }
 
   public function isEqual(Comparable $other) {

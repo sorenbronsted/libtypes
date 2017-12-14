@@ -148,13 +148,7 @@ class CprTest extends PHPUnit_Framework_TestCase {
 		  '000000-0000',
 	  ];
   	foreach ($illegals as $illegal) {
-		  try {
-			  Cpr::parse($illegal);
-			  $this->fail("Expected an exception: $illegal");
-		  }
-		  catch (IllegalArgumentException $e) {
-			  // ok
-		  }
+  		$this->assertNull(Cpr::parse($illegal));
 	  }
 	}
 }

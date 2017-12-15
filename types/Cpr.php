@@ -1,6 +1,8 @@
 <?php
 namespace ufds;
 
+use Exception;
+
 class Cpr implements Comparable {
   private $number;
   
@@ -91,7 +93,7 @@ class Cpr implements Comparable {
 		try {
 			$retval = new Cpr($input);
 		}
-		catch (IllegalArgumentException $e) {
+		catch (Exception $e) {
 			// do nothing
 		}
     return $retval;

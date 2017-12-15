@@ -146,6 +146,13 @@ class CprTest extends PHPUnit_Framework_TestCase {
   		'0',
 		  '-1',
 		  '000000-0000',
+		  'abcdefghij',
+		  'aaaaaaaaaaaaaaaaaaaaaa',
+		  'abcdef0101',
+		  'na7183b4nm',
+		  '012345.6e7',
+		  '012345,6e7',
+		  '.123456e-8',
 	  ];
   	foreach ($illegals as $illegal) {
   		$this->assertNull(Cpr::parse($illegal));

@@ -5,7 +5,7 @@ class Cpr implements Comparable {
   private $number;
   
   public function __construct($number) {
-    if (strlen($number) != 10) {
+    if (strlen($number) != 10 || preg_match('/[\.\,]/', $number) == 1) {
       throw new IllegalArgumentException($number, __FILE__, __LINE__);
     }
     //The first 6 chars must be a date
@@ -13,6 +13,7 @@ class Cpr implements Comparable {
 		  throw new IllegalArgumentException($number, __FILE__, __LINE__);
 	  }
 	  $this->number = $number;
+    $this->getCentury();
   }
   
   public function getDate() {
@@ -45,8 +46,7 @@ class Cpr implements Comparable {
       $result = ($year <= $currentYear ? "20" : "19");
     }
     else { // Danish CPR rules
-	    $sCentury = substr($this->number, 6, 1);
-      $century = intval($sCentury);
+      $century = intval(substr($this->number, 6, 1));
       if ($century < 4) {
         $result = "19";
       }
@@ -55,16 +55,16 @@ class Cpr implements Comparable {
         if ($year >= 0 && $year <= 36) {
           $result = "20";
         }
-        if ($year >= 37 && $year <= 99 && ($century == 4 || $century == 9)) {
+        else if ($year >= 37 && $year <= 99 && ($century == 4 || $century == 9)) {
           $result = "19";
         }
-        if ($year >= 58 && $year <= 99 && !($century == 4 || $century == 9)) {
+        else if ($year >= 58 && $year <= 99 && !($century == 4 || $century == 9)) {
           $result = "18";
         }
       }
     }
     if (strlen($result) == 0) {
-      throw new CprException(__FILE__, __LINE__);
+      throw new CprException($this->number, __FILE__, __LINE__);
     }
     return $result;
   }

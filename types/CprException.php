@@ -4,7 +4,7 @@ namespace ufds;
 use ErrorException;
 
 class CprException extends ErrorException {
-  public function __construct($file, $line) {
-    parent::__construct("Cpr is not valid ($file,$line)");
+  public function __construct($number, $file, $line) {
+    parent::__construct("Cpr $number is not valid ($file,$line)");
   }
 }

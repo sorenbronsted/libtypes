@@ -40,7 +40,7 @@ class Cpr implements Comparable {
   }
 
   public function getCentury() {
-    $result = "";
+    $result = "20";
     if ($this->isForeigner()) {
 			// UFDS foreigners can not be more than 100 years old, otherwise this will return incorrect century
 			$year = substr($this->number, 4, 2);
@@ -49,24 +49,16 @@ class Cpr implements Comparable {
     }
     else { // Danish CPR rules
       $century = intval(substr($this->number, 6, 1));
-      if ($century < 4) {
+	    $year = intval(substr($this->number, 4, 2));
+	    if ($century < 4) {
+		    $result = "19";
+	    }
+      else if (in_array($century,[4,9]) && $year >= 37 && $year <= 99) {
         $result = "19";
       }
-      else {
-        $year = intval(substr($this->number, 4, 2));
-        if ($year >= 0 && $year <= 36) {
-          $result = "20";
-        }
-        else if ($year >= 37 && $year <= 99 && ($century == 4 || $century == 9)) {
-          $result = "19";
-        }
-        else if ($year >= 58 && $year <= 99 && !($century == 4 || $century == 9)) {
-          $result = "18";
-        }
+      else if ($year >= 58 && $year <= 99) {
+	      $result = "18";
       }
-    }
-    if (strlen($result) == 0) {
-      throw new CprException($this->number, __FILE__, __LINE__);
     }
     return $result;
   }

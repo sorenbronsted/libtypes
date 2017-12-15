@@ -35,20 +35,6 @@ class CprTest extends PHPUnit_Framework_TestCase {
     }
   }
 
-  public function testNotValid() {
-    $cprs = array("0103405234", "0103406234", "0103407234", "0103408234");
-    foreach ($cprs as $cpr_number) {
-      try {
-        $cpr = new Cpr($cpr_number);
-        $cpr->getCentury();
-        $this->fail("Expected exception for $cpr_number");
-      }
-      catch (CprException $e) {
-        $this->assertTrue(true);
-      }
-    }
-  }
-  
   public function testSex() {
     $female = new Cpr("0103251224");
     $this->assertEquals(false, $female->isMale());
@@ -153,7 +139,6 @@ class CprTest extends PHPUnit_Framework_TestCase {
 		  '012345.6e7',
 		  '012345,6e7',
 		  '.123456e-8',
-		  '2607547486',
 	  ];
   	foreach ($illegals as $illegal) {
   		$this->assertNull(Cpr::parse($illegal));

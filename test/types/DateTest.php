@@ -3,12 +3,12 @@ namespace ufds;
 
 use DateInterval;
 use DateTime;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use SimpleXMLElement;
 
 require_once 'test/settings.php';
 
-class DateTest extends PHPUnit_Framework_TestCase {
+class DateTest extends TestCase {
 
   public function testValid() {
     $date = Date::parse("01-01-2001");
@@ -155,7 +155,7 @@ class DateTest extends PHPUnit_Framework_TestCase {
       $this->fail("Exception expected");
     }
     catch (IllegalArgumentException $e) {
-      // success
+      $this->assertEquals(IllegalArgumentException::class, get_class($e));
     }
   }
   
@@ -218,5 +218,13 @@ class DateTest extends PHPUnit_Framework_TestCase {
 		$d = Date::parse('01-01-2017');
 		$this->assertEquals(1483225200, $d->getTimestamp()); // Timezone difference
 		$this->assertEquals(' 1. January 2017', strftime("%e. %B %Y", $d->getTimestamp()));
+	}
+
+	public function testClone() {
+		$d = Date::parse('01-01-1970');
+		$cloned = new Date($d);
+		$this->assertEquals($cloned, $d);
+		$d->year += 1;
+		$this->assertNotEquals($cloned, $d);
 	}
 }

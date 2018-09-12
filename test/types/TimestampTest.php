@@ -1,11 +1,11 @@
 <?php
 namespace ufds;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 require_once 'test/settings.php';
 
-class TimestampTest extends PHPUnit_Framework_TestCase {
+class TimestampTest extends TestCase {
 
   public function testDefault() {
     $s = "2012-03-01 12:30:45";

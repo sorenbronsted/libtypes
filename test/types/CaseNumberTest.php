@@ -1,11 +1,11 @@
 <?php
 namespace ufds;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 require_once 'test/settings.php';
 
-class CaseNumberTest extends PHPUnit_Framework_TestCase {
+class CaseNumberTest extends TestCase {
   private $values  = array(20110010, "20110011", 2.0110012e+07, "2.0110013e+07", "14/2011", "15/11",  "1/1",   "2/2002");
   private $answers = array(20110010, 20110011,   20110012,      20110013,         20110014, 20110015, 20010001, 20020002);
   
@@ -54,7 +54,7 @@ class CaseNumberTest extends PHPUnit_Framework_TestCase {
         $this->fail("Exception expected");
       }
       catch (IllegalArgumentException $e) {
-        // success
+        $this->assertEquals(IllegalArgumentException::class, get_class($e));
       }
     }
   }

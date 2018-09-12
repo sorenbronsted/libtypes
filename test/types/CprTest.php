@@ -1,11 +1,11 @@
 <?php
 namespace ufds;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 require_once 'test/settings.php';
 
-class CprTest extends PHPUnit_Framework_TestCase {
+class CprTest extends TestCase {
 
   public function testValid() {
     $cprs = array(
@@ -127,7 +127,7 @@ class CprTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals(false, $cpr2->isEqual($cpr1));
 	}
 
-	public function testIllegalArgument() {
+	public function testNotParsable() {
   	$illegals = [
   		'0',
 		  '-1',

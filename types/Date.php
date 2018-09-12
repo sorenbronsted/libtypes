@@ -21,10 +21,10 @@ class Date implements Comparable {
     else {
       if (is_object($date)) {
         if ($date instanceof Date) {
-          $this->date = $date->date;
+          $this->date = clone $date->date;
         }
         else if ($date instanceof DateTime) {
-          $this->date = $date;
+          $this->date = clone $date;
         }
       }
       else {

@@ -32,7 +32,7 @@ class CaseNumber implements Comparable {
   }
 
   public static function parse($number) {
-    if (is_null($number)) {
+    if (is_null($number) || strtolower($number) == 'null') {
       return null;
     }
     

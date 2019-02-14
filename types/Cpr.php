@@ -73,7 +73,7 @@ class Cpr implements Comparable {
   }
 
   public static function parse($input) {
-    if (is_null($input) || strlen(trim($input)) == 0) {
+    if (is_null($input) || strlen(trim($input)) == 0 || strtolower($input) == 'null') {
       return null;
     }
     $input = str_replace('-','',trim($input));

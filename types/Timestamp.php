@@ -56,7 +56,7 @@ class Timestamp extends Date {
   }
 
 	public static function parse($timestamp, $fmt = null) {
-		if (empty($timestamp) || strlen($timestamp) < 4 || substr($timestamp,0,4) == "0000") {
+		if (empty($timestamp) || strlen($timestamp) < 4 || substr($timestamp,0,4) == "0000" || strtolower($timestamp) == 'null') {
 			return null;
 		}
 		if (is_null($fmt)) { // Try and guess date format

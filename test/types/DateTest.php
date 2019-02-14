@@ -51,9 +51,11 @@ class DateTest extends TestCase {
   }
   
   public function testEmpty() {
-    $d = Date::parse("0000-00-00");
-    $this->assertEquals(true, is_null($d));
-    
+	  foreach (['null', '0000-00-00', '', null] as $value) {
+		  $d = Date::parse($value);
+	    $this->assertEquals(true, is_null($d), "value: $value");
+    }
+
     try {
       $d = Date::parse(10203040506);
       $this->fail("Exception exptected");

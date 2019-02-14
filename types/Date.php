@@ -135,7 +135,7 @@ class Date implements Comparable {
 	}
 
   public static function parse($date, $fmt = null) {
-    if (empty($date) || strlen($date) < 4 || substr($date,0,4) == "0000") {
+    if (empty($date) || strlen($date) < 4 || substr($date,0,4) == "0000" || strtolower($date) == 'null') {
       return null;
     }
     if (is_null($fmt)) { // Try and guess date format

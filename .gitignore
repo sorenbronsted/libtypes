@@ -6,6 +6,7 @@ doc/coverage
 vendor
 public/client/main.dart.*
 public/status.txt
+.phpunit*
 *.sql.gz
 *.tgz
 *~

@@ -74,6 +74,7 @@ class Timestamp extends Date {
 		if (strlen($timestamp) > strlen('9999-12-31 00:00:00')) {
 			$timestamp = substr($timestamp,0,19);
 		}
+		$timestamp[10] = ' ';
 		$dt = DateTime::createFromFormat($fmt, $timestamp, new DateTimeZone(self::TIMEZONE));
 		if ($dt === false) {
 			throw new IllegalArgumentException("Timestamp: $timestamp", __FILE__, __LINE__);

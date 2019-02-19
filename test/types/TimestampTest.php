@@ -59,6 +59,8 @@ class TimestampTest extends TestCase {
 	public function testParse() {
 		$ts = Timestamp::parse('2016-12-09 01:23:45.678');
 		$this->assertEquals('2016-12-09 01:23:45', $ts);
+		$ts = Timestamp::parse('2016-12-09T01:23:45');
+		$this->assertEquals('2016-12-09 01:23:45', $ts);
 		$ts = Timestamp::parse('2016-12-09');
 		$this->assertEquals('2016-12-09 00:00:00', $ts);
 	}

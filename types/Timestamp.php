@@ -26,6 +26,9 @@ class Timestamp extends Date {
       case "second" :
         $fmt = "s";
         break;
+			case "microsecond" :
+				$fmt = "u";
+				break;
       default:
         return parent::__get($name);
     }
@@ -36,16 +39,20 @@ class Timestamp extends Date {
     $hour = $this->hour;
     $minute = $this->minute;
     $second = $this->second;
+		$microsecond = $this->microsecond;
     switch ($name) {
       case "hour":
-        $this->date->setTime(intval($value), $minute, $second);
+        $this->date->setTime(intval($value), $minute, $second, $microsecond);
         break;
       case "minute":
-        $this->date->setTime($hour, intval($value), $second);
+        $this->date->setTime($hour, intval($value), $second, $microsecond);
         break;
       case "second":
-        $this->date->setTime($hour, $minute, intval($value));
+        $this->date->setTime($hour, $minute, intval($value), $microsecond);
         break;
+			case "microsecond":
+				$this->date->setTime($hour, $minute, $second, intval($value));
+				break;
       default:
         parent::__set($name, $value);
     }
@@ -67,14 +74,14 @@ class Timestamp extends Date {
 			else if (strlen($timestamp) > 10) {
 				$fmt = self::FMT_DA_LONG;
 			}
+			if (strlen($timestamp) <= strlen('9999-12-31')) {
+				$timestamp .= ' 00:00:00';
+			}
+			if (strlen($timestamp) > strlen('9999-12-31 00:00:00')) {
+				$timestamp = substr($timestamp,0,19);
+			}
+			$timestamp[10] = ' ';
 		}
-		if (strlen($timestamp) <= strlen('9999-12-31')) {
-			$timestamp .= ' 00:00:00';
-		}
-		if (strlen($timestamp) > strlen('9999-12-31 00:00:00')) {
-			$timestamp = substr($timestamp,0,19);
-		}
-		$timestamp[10] = ' ';
 		$dt = DateTime::createFromFormat($fmt, $timestamp, new DateTimeZone(self::TIMEZONE));
 		if ($dt === false) {
 			throw new IllegalArgumentException("Timestamp: $timestamp", __FILE__, __LINE__);

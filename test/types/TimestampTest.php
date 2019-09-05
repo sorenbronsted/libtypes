@@ -1,6 +1,8 @@
 <?php
 namespace ufds;
 
+use DateTime;
+use DateTimeZone;
 use PHPUnit\Framework\TestCase;
 
 require_once 'test/settings.php';
@@ -63,5 +65,14 @@ class TimestampTest extends TestCase {
 		$this->assertEquals('2016-12-09 01:23:45', $ts);
 		$ts = Timestamp::parse('2016-12-09');
 		$this->assertEquals('2016-12-09 00:00:00', $ts);
+	}
+
+
+	public function testNow() {
+		$ts = new Timestamp();
+		$ts->microsecond = 0; // Ignore microseconds because that will never succeed
+		$dt = new DateTime("now", new DateTimeZone(Date::TIMEZONE));
+		$fixture = Timestamp::parse($dt->format('Y-m-d H:i:s'), 'Y-m-d H:i:s');
+		$this->assertEquals($fixture, $ts);
 	}
 }

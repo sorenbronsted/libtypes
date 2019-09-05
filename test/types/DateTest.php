@@ -3,6 +3,7 @@ namespace ufds;
 
 use DateInterval;
 use DateTime;
+use DateTimeZone;
 use PHPUnit\Framework\TestCase;
 use SimpleXMLElement;
 
@@ -228,5 +229,13 @@ class DateTest extends TestCase {
 		$this->assertEquals($cloned, $d);
 		$d->year += 1;
 		$this->assertNotEquals($cloned, $d);
+	}
+
+	public function testNow() {
+  	$d = new Date();
+  	$dt = new DateTime("now", new DateTimeZone(Date::TIMEZONE));
+  	$fixture = Date::parse($dt->format('Ymd'));
+  	$this->assertEquals($fixture, $d);
+  	$this->assertEquals('00:00:00', $d->format('H:i:s'));
 	}
 }

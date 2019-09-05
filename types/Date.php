@@ -17,6 +17,9 @@ class Date implements Comparable {
   public function __construct($date = null) {
     if (is_null($date)) {
       $this->date = new DateTime("now", new DateTimeZone(self::TIMEZONE));
+      if (get_called_class() == Date::class) {
+      	$this->date->setTime(0,0,0,0);
+			}
     }
     else {
       if (is_object($date)) {

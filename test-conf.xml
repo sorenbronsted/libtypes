@@ -30,7 +30,7 @@
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">application</directory>
+            <directory suffix=".php">types</directory>
             <exclude>
                 <directory>vendor</directory>
                 <directory>test</directory>

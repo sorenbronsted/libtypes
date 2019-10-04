@@ -4,6 +4,8 @@ namespace ufds;
 use Exception;
 
 class Cpr implements Comparable {
+	const MALE = 'm';
+	const FEMALE = 'k';
   private $number;
   
   public function __construct($number) {
@@ -38,6 +40,10 @@ class Cpr implements Comparable {
   public function isForeigner() {
 	  return !is_numeric(substr($this->number, 6)) || substr($this->number, 6) == '0000';
   }
+
+  public function getGender() {
+  	return $this->isMale() ? self::MALE : self::FEMALE;
+	}
 
   public function getCentury() {
     $result = "20";

@@ -38,8 +38,10 @@ class CprTest extends TestCase {
   public function testSex() {
     $female = new Cpr("0103251224");
     $this->assertEquals(false, $female->isMale());
+    $this->assertEquals(Cpr::FEMALE, $female->getGender());
     $male = new Cpr("0103251235");
     $this->assertEquals(true, $male->isMale());
+		$this->assertEquals(Cpr::MALE, $male->getGender());
   }
   
   public function testParse() {

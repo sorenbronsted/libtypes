@@ -20,6 +20,7 @@ class CaseNumberTest extends TestCase {
     $this->assertNull(CaseNumber::parse("a"));
     $this->assertNull(CaseNumber::parse("1"));
     $this->assertNull(CaseNumber::parse("1.2"));
+		$this->assertNull(CaseNumber::parse(''));
     $this->assertNull(CaseNumber::parse(null));
   }
   

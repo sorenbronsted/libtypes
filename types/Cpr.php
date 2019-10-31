@@ -17,7 +17,6 @@ class Cpr implements Comparable {
 		  throw new IllegalArgumentException($number, __FILE__, __LINE__);
 	  }
 	  $this->number = $number;
-    $this->getCentury();
   }
   
   public function getDate() {
@@ -84,7 +83,7 @@ class Cpr implements Comparable {
     }
     $input = str_replace('-','',trim($input));
 		$input = substr($input,0,10);
-		if (strlen($input) == 9) {
+		if (strlen($input) == 9 && is_numeric($input)) {
 			$input = '0'.$input;
 		}
 		$retval = null;
@@ -92,7 +91,7 @@ class Cpr implements Comparable {
 			$retval = new Cpr($input);
 		}
 		catch (Exception $e) {
-			// do nothing
+			// do nothing, it is not parsable
 		}
     return $retval;
   }

@@ -141,6 +141,8 @@ class CprTest extends TestCase {
 		  '012345.6e7',
 		  '012345,6e7',
 		  '.123456e-8',
+			'280310',
+			'211092AA1',
 	  ];
   	foreach ($illegals as $illegal) {
   		$this->assertNull(Cpr::parse($illegal));

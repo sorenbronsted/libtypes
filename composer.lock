@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f2c637c2db5443038dc3903241ee6df2",
+    "content-hash": "d4826c85f25bc43832fed392e58e57f0",
     "packages": [
         {
             "name": "sbronsted/libcommon",
@@ -1576,7 +1576,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.0"
+        "php": ">=7.0",
+        "ext-simplexml": "*"
     },
     "platform-dev": []
 }

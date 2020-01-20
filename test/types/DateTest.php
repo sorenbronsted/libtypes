@@ -1,5 +1,5 @@
 <?php
-namespace ufds;
+namespace sbronsted;
 
 use DateInterval;
 use DateTime;
@@ -220,7 +220,7 @@ class DateTest extends TestCase {
 
 		$d = Date::parse('01-01-2017');
 		$this->assertEquals(1483225200, $d->getTimestamp()); // Timezone difference
-		$this->assertEquals(' 1. January 2017', strftime("%e. %B %Y", $d->getTimestamp()));
+		$this->assertEquals('31. December 2016', strftime("%e. %B %Y", $d->getTimestamp()));
 	}
 
 	public function testClone() {

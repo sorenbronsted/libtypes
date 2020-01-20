@@ -1,5 +1,5 @@
 <?php
-namespace ufds;
+namespace sbronsted;
 
 use PHPUnit\Framework\TestCase;
 
@@ -66,7 +66,7 @@ class CprTest extends TestCase {
   public function testGetDate() {
     $male = new Cpr("0103251235");
     $date = $male->getDate();
-    $this->assertInstanceOf("ufds\Date", $date);
+    $this->assertInstanceOf(Date::class, $date);
     $this->assertEquals(Date::parse("1925-03-01"), $date);
   }
   

@@ -58,7 +58,7 @@ class DateTest extends TestCase {
     }
 
     try {
-      $d = Date::parse(10203040506);
+      Date::parse('10203040506');
       $this->fail("Exception exptected");
     }
     catch(IllegalArgumentException $e) {

@@ -3,6 +3,9 @@ namespace sbronsted;
 
 use Exception;
 
+/**
+ * Class Cpr implements the danish civil registration number (cpr.dk). The number encodes date of birth and gender.
+ */
 class Cpr implements Comparable {
 	const MALE = 'm';
 	const FEMALE = 'k';

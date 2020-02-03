@@ -5,6 +5,9 @@ use DateInterval;
 use DateTime;
 use DateTimeZone;
 
+/**
+ * Class Date implement date operations and is heavenly geared towards mysql date column
+ */
 class Date implements Comparable {
   protected $date;
   const FMT_DA = "d-m-Y";

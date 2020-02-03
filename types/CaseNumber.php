@@ -1,6 +1,9 @@
 <?php
 namespace sbronsted;
 
+/**
+ * Class CaseNumber is use to represent at case number at UFDS
+ */
 class CaseNumber implements Comparable {
   private $number;
 

@@ -4,6 +4,9 @@ namespace sbronsted;
 use DateTime;
 use DateTimeZone;
 
+/**
+ * Class Timestamp implements date and time operations and is heavenly geared towards mysql datetime column
+ */
 class Timestamp extends Date {
 
   public function __construct($datetime = null) {

@@ -13,8 +13,8 @@
     }
   ],
   "scripts": {
-    "test": "vendor/bin/phpunit -c test-conf.xml",
-    "coverage": "vendor/bin/phpunit -c test-conf.xml --coverage-html build/coverage"
+    "test": "vendor/bin/phpunit",
+    "coverage": "vendor/bin/phpunit --coverage-clover coverage.xml"
   },
   "autoload": {
     "psr-4": { "sbronsted\\": ["types/"] }

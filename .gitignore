@@ -10,3 +10,4 @@ public/status.txt
 *.sql.gz
 *.tgz
 *~
+coverage.xml

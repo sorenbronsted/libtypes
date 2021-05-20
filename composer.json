@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "test": "vendor/bin/phpunit",
-    "coverage": "vendor/bin/phpunit --coverage-clover coverage.xml"
+    "coverage": "vendor/bin/phpunit --coverage-text"
   },
   "autoload": {
     "psr-4": { "sbronsted\\": ["types/"] }

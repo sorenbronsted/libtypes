@@ -10,12 +10,8 @@
 		</testsuite>
 	</testsuites>
 	<filter>
-		<whitelist processUncoveredFilesFromWhitelist="true">
+		<whitelist addUncoveredFilesFromWhitelist="true">
 			<directory suffix=".php">types</directory>
 		</whitelist>
 	</filter>
-	<php>
-		<ini name="memory_limit" value="2048M"/>
-		<ini name="max_execution_time" value="60"/>
-	</php>
 </phpunit>
